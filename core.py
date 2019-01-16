@@ -153,13 +153,13 @@ def parse_css(content, info, fix_css=True, ignore_css=False):
         return style_tag(style)
 
     if ignore_css:
-        content = content + LATEX_CUSTOM_SCRIPT
+        content = content
     else:
         if fix_css:
             jupyter_css = '\n'.join(filter_css(style) for style in info['inlining']['css'])
         else:
             jupyter_css = '\n'.join(style_tag(style) for style in info['inlining']['css'])
-        content = jupyter_css + content + LATEX_CUSTOM_SCRIPT
+        content = jupyter_css + content
     return content
 
 
